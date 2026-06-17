@@ -1,0 +1,8 @@
+
+    Execution Report
+    ----------------
+    Execution ID: EXEC-001
+    Command ID: CMD-001
+    Status: ISSUED
+    Path: Lineage
+    
