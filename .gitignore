@@ -141,3 +141,6 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
+git add -f dist
+git commit -m "Force add dist folder (override ignore)"
+git push
