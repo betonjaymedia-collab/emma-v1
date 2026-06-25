@@ -1,18 +1,25 @@
-import { v4 as uuidv4 } from "uuid";
-import { ComponentSchema } from "./types/contracts";
+import crypto from "crypto";
+import { insertComponent } from "./db/componentRepository";
 
 const testComponent = {
-  id: uuidv4(),
-  name: "Test Component",
+  id: crypto.randomUUID(),
+  name: "TestComponent",
   status: "LOCKED",
-  definition: "Initial test definition",
+  definition: "Test definition",
   dependencies: {
     relies_on: [],
-    impacts: []
+    impacts: [],
   },
-  updatedAt: new Date()
+  updatedAt: new Date(),
 };
 
-const result = ComponentSchema.safeParse(testComponent);
+async function run() {
+  try {
+    await insertComponent(testComponent);
+    console.log("✅ Component inserted into DB");
+  } catch (err) {
+    console.error("❌ Insert Error:", err);
+  }
+}
 
-console.log(result);
+run();
